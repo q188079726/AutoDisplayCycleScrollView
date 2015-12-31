@@ -6,7 +6,7 @@
 ###描述(Description) 
   来自于Git上的CycleScrollView
 
-  this code frmo git
+  this code from git
 
   修改后可以使用 Xib 和 Storyboard 初始化
 
