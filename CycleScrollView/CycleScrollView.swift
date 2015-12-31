@@ -99,18 +99,24 @@ class CycleScrollView: UIScrollView, UIScrollViewDelegate {
     }
 
     // MARK: - AutoDisplay Method
+    private var timer: NSTimer? = nil
     var scrollTimeinterval = 0.0 {
         didSet {
+            if timer == nil {
+                timer = NSTimer.scheduledTimerWithTimeInterval(scrollTimeinterval, target: self, selector: "autoScroll", userInfo: nil, repeats: true)
+            }
             if scrollTimeinterval > 0 {
-                let timer = NSTimer.scheduledTimerWithTimeInterval(scrollTimeinterval, target: self, selector: "autoScroll", userInfo: nil, repeats: true)
-                timer.fire()
+                timer?.fire()
+            }
+            else {
+                timer?.invalidate()
+                timer = nil
             }
         }
     }
     func autoScroll() {
         self.setContentOffset(CGPoint(x: selfWidth * 2, y: 0), animated: true)
     }
-    
     
     // MARK: - init Method
     private var selfWidth: CGFloat {
