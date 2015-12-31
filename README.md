@@ -1,7 +1,7 @@
 # AutoDisplayCycleScrollView
 
 **Swift实现的自动轮播器**
-AutoDisplayCycleScrollView in Swift
+**AutoDisplayCycleScrollView in Swift**
 
 ###描述(Description) 
   来自于Git上的CycleScrollView
