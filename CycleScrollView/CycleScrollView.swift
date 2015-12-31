@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class CycleScrollView: UIScrollView, UIScrollViewDelegate {
 
     // MARK: - DataSource Method
@@ -117,6 +118,8 @@ class CycleScrollView: UIScrollView, UIScrollViewDelegate {
     func autoScroll() {
         self.setContentOffset(CGPoint(x: selfWidth * 2, y: 0), animated: true)
     }
+    // MARK: - Gesture Method
+    var didTouchDisplayScrollViewOnIndex: ((Int)->())? = nil
     
     // MARK: - init Method
     private var selfWidth: CGFloat {
@@ -149,12 +152,19 @@ class CycleScrollView: UIScrollView, UIScrollViewDelegate {
         self.init(frame: CGRectZero)
     }
     
-    //MARK:- delegate
+    //MARK: - delegate
     func scrollViewDidEndDecelerating(scrollView: UIScrollView) {
         renewContentOffSet()
     }
-    
+    // MARK: - Event Method
     func scrollViewDidEndScrollingAnimation(scrollView: UIScrollView) {
         renewContentOffSet()
+    }
+    
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+        if didTouchDisplayScrollViewOnIndex != nil {
+            didTouchDisplayScrollViewOnIndex!(currentPageNum)
+        }
+        
     }
 }

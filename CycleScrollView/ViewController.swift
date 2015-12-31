@@ -48,6 +48,7 @@ class ViewController: UIViewController {
 
         csv.scrollTimeinterval = 8.0
         csv.showPageControl = true
+        csv.didTouchDisplayScrollViewOnIndex = { index in print(index)}
     }
 
 
